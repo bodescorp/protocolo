@@ -1,5 +1,5 @@
 import { getCustomRepository } from "typeorm";
-import { UsersRepositores } from "../repositories/UsersRepositories"
+import { UsersRepositories } from "../repositories/UsersRepositories"
 
 interface IUserRequet{
     name: string;
@@ -9,7 +9,7 @@ interface IUserRequet{
 
 class CreateUserService {
     async execute({name, matricula, cargo}){
-        const usersRepository = getCustomRepository(UsersRepositores);
+        const usersRepository = getCustomRepository(UsersRepositories);
 
         if (!matricula){
             throw new Error("Matricula incorrect")
