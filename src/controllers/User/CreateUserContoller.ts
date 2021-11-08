@@ -1,8 +1,8 @@
 import {Request, response, Response} from "express"
-import { CreateUserService } from "../services/CreateUserService";
+import { CreateUserService } from "../../services/User/CreateUserService";
 
 class CreateUserController {
-    async Handle(request: Request, Response: Response){
+    async handle(request: Request, Response: Response){
         const {name, matricula, cargo} = request.body;
 
         const createUserService = new CreateUserService();
