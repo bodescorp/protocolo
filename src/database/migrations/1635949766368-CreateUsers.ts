@@ -17,7 +17,7 @@ export class CreateUsers1635949766368 implements MigrationInterface {
                 },
                 {
                     name: "matricula",
-                    type: "integer"
+                    type: "bigint"
                 },
                 {
                     name: "cargo",

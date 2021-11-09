@@ -2,12 +2,12 @@ import {Request, response, Response} from "express"
 import { CreateUserService } from "../../services/User/CreateUserService";
 
 class CreateUserController {
-    async handle(request: Request, Response: Response){
-        const {name, matricula, cargo} = request.body;
+    async handle(request: Request, response: Response){
+        const {name, matricula, cargo, password} = request.body;
 
         const createUserService = new CreateUserService();
 
-        const user = await createUserService.execute({name, matricula, cargo});
+        const user = await createUserService.execute({name, matricula, cargo,password});
 
         return response.json(user);
     }

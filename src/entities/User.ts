@@ -12,6 +12,9 @@ class User {
     
     @Column()
     matricula: number;
+
+    @Column()
+    password: string;
     
     @Column()
     cargo: string;

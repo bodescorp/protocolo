@@ -5,10 +5,11 @@ interface IUserRequet{
     name: string;
     matricula: number;
     cargo: string;
+    password: string;
 }
 
 class CreateUserService {
-    async execute({name, matricula, cargo}){
+    async execute({name, matricula, cargo, password}){
         const usersRepository = getCustomRepository(UsersRepositories);
 
         if (!matricula){
@@ -21,11 +22,13 @@ class CreateUserService {
             throw new Error("User already exists");
         }
 
-        const user = usersRepository.create({name, matricula, cargo})
+        const user = usersRepository.create({name, matricula, cargo, password})
 
         await usersRepository.save(user);
 
+        
         return user;
+        
     }
 }
 
