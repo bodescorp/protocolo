@@ -1,22 +1,27 @@
 import express, { Request, Response, NextFunction } from "express";
 import "express-async-errors";
-import "reflect-metadata"
-import "./database"
+import "reflect-metadata";
+import "./database";
+import morgan from "morgan";
 
 import { routerCurso } from "./routes/routerCurso"; 
 import { routerUser } from "./routes/routerUser"; 
 import { validError } from "./middlewares/validError"; 
 import { routerSolicitacao } from "./routes/routerSolicitacao"; 
+import { routerArquivo } from "./routes/routerArquivo";
 
 
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(morgan("dev"));
 
 // rotas
 app.use(routerUser);
 app.use(routerCurso)
 app.use(routerSolicitacao)
+app.use(routerArquivo)
 
 app.use(validError)
 
