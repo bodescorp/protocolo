@@ -1,15 +1,15 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn} from "typeorm"
-import { v4 as uuid } from "uuid";
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm"
+
 
 @Entity("arquivos")
 class Arquivo {
-    
+
     @PrimaryColumn()
     readonly key: string;
 
     @Column()
     originalname: string;
-    
+
     @Column()
     mimetype: string;
 
@@ -24,7 +24,8 @@ class Arquivo {
 
     @UpdateDateColumn()
     updated_at: Date;
-
+    
+    
 }
 
 export { Arquivo }
