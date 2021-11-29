@@ -10,6 +10,7 @@ import { routerUser } from "./routes/routerUser";
 import { validError } from "./middlewares/validError";
 import { routerSolicitacao } from "./routes/routerSolicitacao";
 import { routerArquivo } from "./routes/routerArquivo";
+import { routerDemanda } from "./routes/routerDemanda";
 
 
 const app = express();
@@ -24,6 +25,7 @@ app.use(routerUser);
 app.use(routerCurso)
 app.use(routerSolicitacao)
 app.use(routerArquivo)
+app.use(routerDemanda)
 
 app.use(validError)
 

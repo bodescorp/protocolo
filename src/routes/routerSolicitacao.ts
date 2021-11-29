@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { CreateSolicitacaoController } from "../controllers/Solicitacao/CreateSolicitacaoController";
-import { CreateUserController } from "../controllers/User/CreateUserContoller";
 import { ensureCargo } from "../middlewares/ensureCargo";
 
 const routerSolicitacao = Router();
