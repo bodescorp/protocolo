@@ -3,12 +3,14 @@ import { CreateDemandaService } from "../../services/Demanda/CreateDemandaServic
 
 class CreateDemandaController {
     async handle(request: Request, response: Response) {
-        const { id_user, id_curso, id_solicita, id_arquivo, message } = request.body;
+        const { id_curso, id_solicita, id_arquivo, message } = request.body;
+
+        const { user_id } = request
 
         const createDemandaService = new CreateDemandaService();
 
         const demanda = await createDemandaService.execute({
-            id_user,
+            id_user: user_id,
             id_curso,
             id_solicita,
             id_arquivo,
