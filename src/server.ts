@@ -4,6 +4,7 @@ import "reflect-metadata";
 import "./database";
 import morgan from "morgan";
 import path from "path";
+import cors from "cors"
 
 import { routerCurso } from "./routes/routerCurso";
 import { routerUser } from "./routes/routerUser";
@@ -15,6 +16,7 @@ import { routerDemanda } from "./routes/routerDemanda";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
