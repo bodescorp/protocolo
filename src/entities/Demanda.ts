@@ -15,29 +15,29 @@ class Demanda {
     @Column()
     id_user: string;
 
-    @JoinColumn({name: "id_user"})
-    @ManyToMany(()=> User)
+    @JoinColumn({ name: "id_user" })
+    @ManyToOne(() => User)
     user: User;
 
     @Column()
     id_curso: string;
 
-    @JoinColumn({name: "id_curso"})
-    @ManyToMany(()=> Curso)
+    @JoinColumn({ name: "id_curso" })
+    @ManyToOne(() => Curso)
     curso: Curso;
 
     @Column()
     id_solicita: string;
 
-    @JoinColumn({name: "id_solicita"})
-    @ManyToMany(()=> Solicitacao)
+    @JoinColumn({ name: "id_solicita" })
+    @ManyToOne(() => Solicitacao)
     solicitacao: Solicitacao;
 
     @Column()
     id_arquivo: string;
 
-    @JoinColumn({name: "id_arquivo"})
-    @ManyToOne(()=> Arquivo)
+    @JoinColumn({ name: "id_arquivo" })
+    @ManyToOne(() => Arquivo)
     arquivo: Arquivo;
 
     @Column()
@@ -48,7 +48,7 @@ class Demanda {
 
     @UpdateDateColumn()
     updated_at: Date;
-    
+
     constructor() {
         if (!this.id) {
             this.id = uuid();
