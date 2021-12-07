@@ -1,12 +1,16 @@
 import { Request, Response } from "express"
 import { CreateArquivoService } from "../../services/Arquivo/CreateArquivoService";
 
+ 
 class CreateArquivoController {
     async handle(request: Request, response: Response) {
-        const { filename, originalname, mimetype, size } = request.file;
+        const { key , originalname, mimetype, size, location: url= ""} = request.file as Express.MulterS3.File ; 
+        
+        //const {filename,originalname, mimetype, size, destination: url= ""} = request.file
+        
         const createArquivoService = new CreateArquivoService();
 
-        const arquivo = await createArquivoService.execute({key:filename , originalname, mimetype, size, url:''});
+        const arquivo = await createArquivoService.execute({key , originalname, mimetype, size, url });
        
         return response.json(arquivo);
     }

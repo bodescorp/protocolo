@@ -1,37 +1,65 @@
-import { Options, diskStorage } from 'multer'
-import { resolve } from 'path'
-import { randomBytes } from 'crypto'
+import multer from "multer"
+import path from 'path'
+import crypto from "crypto"
+import aws from "aws-sdk"
+import multerS3 from "multer-s3"
+import dotenv from 'dotenv'
 
-export const multerConfig = {
-    dest: resolve(__dirname, '..', '..', '..', 'tmp', 'uploads'),
-    storage: diskStorage({
+
+dotenv.config();
+
+
+const storageTypes = {
+    local: multer.diskStorage({
         destination: (request, file, callback) => {
-            callback(null, resolve(__dirname, '..', '..', '..', 'tmp', 'uploads'))
+            callback(null, path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads'));
         },
         filename: (request, file, callback) => {
-            randomBytes(16, (error, hash) => {
+            crypto.randomBytes(16, (error, hash) => {
                 if (error) {
-                    callback(error, file.filename)
+                    callback(error,null);
                 }
-                const filename = `${hash.toString('hex')}_${file.originalname}`;
-                callback(null, filename)
-            })
-        }
+                const fileName = `${hash.toString("hex")}-${file.originalname}`;
+
+                callback(null, fileName);
+            });
+        },
     }),
+    s3: multerS3({
+        s3: new aws.S3(),
+        bucket: process.env.BUCKET_NAME,
+        contentType: multerS3.AUTO_CONTENT_TYPE,
+        acl: "public-read",
+        key: (request, file, callback) => {
+            crypto.randomBytes(16, (error, hash) => {
+                if (error) callback(error);
+
+                const fileName = `${hash.toString("hex")}-${file.originalname}`;
+
+                callback(null, fileName);
+            });
+        }
+    })
+};
+
+export const multerConfig = {
+    dest: path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads'),
+    storage: storageTypes[process.env.STORAGE_TYPE],
     limits: {
-        fileSize: 5 * 1024 * 1024 // 5MB
+        fileSize: 2 * 1024 * 1024
     },
     fileFilter: (request, file, callback) => {
-        const formats = [
-            'image/jpeg',
-            'image/jpg',
-            'image/png'
+        const allowedMimes = [
+            "image/jpeg",
+            "image/pjpeg",
+            "image/png",
+            "image/gif"
         ];
 
-        if (formats.includes(file.mimetype)) {
-            callback(null, true)
+        if (allowedMimes.includes(file.mimetype)) {
+            callback(null, true);
         } else {
-            callback(new Error('Format not accepted'))
+            callback(new Error("Invalid file type."));
         }
     }
-} as Options
+};
