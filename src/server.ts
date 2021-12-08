@@ -12,6 +12,7 @@ import { validError } from "./middlewares/validError";
 import { routerSolicitacao } from "./routes/routerSolicitacao";
 import { routerArquivo } from "./routes/routerArquivo";
 import { routerDemanda } from "./routes/routerDemanda";
+import { routerCargo } from "./routes/routerCargo";
 
 
 const app = express();
@@ -28,6 +29,7 @@ app.use(routerCurso)
 app.use(routerSolicitacao)
 app.use(routerArquivo)
 app.use(routerDemanda)
+app.use(routerCargo)
 
 app.use(validError)
 
