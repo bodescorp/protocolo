@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express"
 import { getCustomRepository } from "typeorm";
+import { CargosRepositories } from "../repositories/CargosRepositories";
 import { UsersRepositories } from "../repositories/UsersRepositories";
 
 
@@ -8,10 +9,17 @@ export async function ensureAdm(request: Request, response: Response, next: Next
     const { user_id } = request
 
     const userRepositories = getCustomRepository(UsersRepositories);
+    const cargosRepositories = getCustomRepository(CargosRepositories);
 
-    const {cargo} = await userRepositories.findOne(user_id)
+    const { cargo } = await userRepositories.findOne(user_id)
+    
+    const cargoAdm = await cargosRepositories.findOne({
+        where: {
+            name:"Adm"
+        }
+    });
 
-    if (cargo === "Adm") {
+    if (cargo == cargoAdm.id) {
         return next();
     }
 

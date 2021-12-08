@@ -1,7 +1,8 @@
 
 import { Exclude } from "class-transformer";
-import {Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn} from "typeorm";
+import {Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, JoinColumn, ManyToMany, ManyToOne} from "typeorm";
 import {v4 as uuid} from "uuid"
+import { Cargo } from "./Cargo";
 
 
 @Entity("users")
@@ -21,6 +22,9 @@ class User {
     
     @Column()
     cargo: string;
+    @JoinColumn({name: "cargo"})
+    @ManyToOne(() => Cargo)
+    id_cargo: Cargo
     
     @CreateDateColumn()
     created_at: Date;

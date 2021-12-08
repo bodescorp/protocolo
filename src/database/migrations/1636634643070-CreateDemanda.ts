@@ -27,11 +27,13 @@ export class CreateDemanda1636634643070 implements MigrationInterface {
                     },
                     {
                         name: "id_arquivo",
-                        type: "varchar"
+                        type: "varchar",
+                        isNullable: true
                     },
                     {
                         name: "message",
-                        type: "varchar"
+                        type: "varchar",
+                        isNullable: true
                     },
                     {
                         name: "created_at",
@@ -44,41 +46,7 @@ export class CreateDemanda1636634643070 implements MigrationInterface {
                         default: "now()"
                     }
                 ],
-                foreignKeys: [
-                    {
-                        name: "FKUserID",
-                        referencedTableName: "users",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["id_user"],
-                        onDelete: "SET NULL",
-                        onUpdate: "SET NULL",
-                    },
-                    {
-                        name: "FKCursoID",
-                        referencedTableName: "cursos",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["id_curso"],
-                        onDelete: "SET NULL",
-                        onUpdate: "SET NULL",
-                    },
-                    {
-                        name: "FKSolicitaID",
-                        referencedTableName: "solicitacoes",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["id_solicita"],
-                        onDelete: "SET NULL",
-                        onUpdate: "SET NULL",
-                    },
-                    {
-                        name: "FKArquivoID",
-                        referencedTableName: "arquivos",
-                        referencedColumnNames: ["key"],
-                        columnNames: ["id_arquivo"],
-                        onDelete: "SET NULL",
-                        onUpdate: "SET NULL",
-                    },
-                    
-                ]
+                
             })
         )
     }

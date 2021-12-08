@@ -7,7 +7,7 @@ class ListUserService {
     async execute() {
         const userRepositories = getCustomRepository(UsersRepositories)
 
-        const users = userRepositories.find();
+        const users = userRepositories.find({relations: ["id_cargo"]});
 
         return classToPlain(users);
     }

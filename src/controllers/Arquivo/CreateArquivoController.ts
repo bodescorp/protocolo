@@ -4,9 +4,9 @@ import { CreateArquivoService } from "../../services/Arquivo/CreateArquivoServic
  
 class CreateArquivoController {
     async handle(request: Request, response: Response) {
-        const { key , originalname, mimetype, size, location: url= ""} = request.file as Express.MulterS3.File ; 
+        //const { key , originalname, mimetype, size, location: url= ""} = request.file as Express.MulterS3.File ; 
         
-        //const {filename,originalname, mimetype, size, destination: url= ""} = request.file
+        const {filename:key ,originalname, mimetype, size, destination: url= ""} = request.file
         
         const createArquivoService = new CreateArquivoService();
 

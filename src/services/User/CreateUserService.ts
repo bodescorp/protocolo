@@ -1,6 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import { UsersRepositories } from "../../repositories/UsersRepositories";
 import {hash} from "bcryptjs";
+import { CargosRepositories } from "../../repositories/CargosRepositories";
 
 interface IUserRequet{
     name: string;
@@ -21,6 +22,13 @@ class CreateUserService {
 
         if (userAlreadyExists){
             throw new Error("User already exists");
+        }
+
+        const cargoRepository = getCustomRepository(CargosRepositories);
+        
+        const cargoExists = await cargoRepository.findOne(cargo)
+        if (!cargoExists){
+            throw new Error("Cargo does not exists!");
         }
 
         const passwordHash = await hash(password, 8)
