@@ -1,14 +1,16 @@
 import { Request, Response } from "express";
-import { ListUserService } from "../../services/User/ListUserService";
+import { InfoMeService } from "../../services/User/InfoMeService";
 
 
 
 
 class InfoMeController {
     async handle(request: Request, response: Response){
-        const listUserService = new ListUserService();
+        const {user_id} = request
+         
+        const infoMeService = new InfoMeService();
 
-        const user = await listUserService.execute();
+        const user = await infoMeService.execute(user_id);
 
         return response.json(user);
     }
