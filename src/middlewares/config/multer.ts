@@ -46,14 +46,11 @@ export const multerConfig = {
     dest: path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads'),
     storage: storageTypes[process.env.STORAGE_TYPE],
     limits: {
-        fileSize: 2 * 1024 * 1024
+        fileSize: 32 * 1024 * 1024
     },
     fileFilter: (request, file, callback) => {
         const allowedMimes = [
-            "image/jpeg",
-            "image/pjpeg",
-            "image/png",
-            "image/gif"
+            "application/pdf"
         ];
 
         if (allowedMimes.includes(file.mimetype)) {
