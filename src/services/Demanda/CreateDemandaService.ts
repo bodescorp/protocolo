@@ -23,6 +23,8 @@ class CreateDemandaService {
 
         const arquivoRepositories = getCustomRepository(ArquivosRepositories);
 
+        
+
         const cursoExists = await cursoRepositories.findOne(id_curso);
 
         if (!cursoExists) {
