@@ -11,7 +11,7 @@ interface IUserRequet{
 }
 
 class CreateUserService {
-    async execute({name, matricula, cargo, password}){
+    async execute({name, matricula, cargo="a9976734-42ae-4fd5-9ab8-d15fb2319137", password}){
         const usersRepository = getCustomRepository(UsersRepositories);
 
         if (!matricula){

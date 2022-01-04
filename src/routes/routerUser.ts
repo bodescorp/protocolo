@@ -14,7 +14,7 @@ const authenticateUserController = new AuthenticateUserController();
 const listUserController = new ListUserController();
 const infoMeController = new InfoMeController();
 
-routerUser.post("/users", ensureAuthenticated, ensureAdm, createUserController.handle)
+routerUser.post("/users", createUserController.handle)
 routerUser.post("/login", authenticateUserController.handle);
 routerUser.get("/users", ensureAuthenticated, ensureAdm, listUserController.handle)
 routerUser.get("/profile/user",ensureAuthenticated, infoMeController.handle)
