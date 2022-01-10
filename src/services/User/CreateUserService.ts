@@ -2,6 +2,10 @@ import { getCustomRepository } from "typeorm";
 import { UsersRepositories } from "../../repositories/UsersRepositories";
 import {hash} from "bcryptjs";
 import { CargosRepositories } from "../../repositories/CargosRepositories";
+import dotenv from 'dotenv'
+
+
+dotenv.config();
 
 interface IUserRequet{
     name: string;
@@ -11,7 +15,7 @@ interface IUserRequet{
 }
 
 class CreateUserService {
-    async execute({name, matricula, cargo="a9976734-42ae-4fd5-9ab8-d15fb2319137", password}){
+    async execute({name, matricula, cargo=`${process.env.ID_CARGO_ALUNO}`, password}){
         const usersRepository = getCustomRepository(UsersRepositories);
 
         if (!matricula){

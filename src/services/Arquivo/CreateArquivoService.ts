@@ -1,6 +1,8 @@
 import { getCustomRepository } from "typeorm";
 import { ArquivosRepositories } from "../../repositories/ArquivosRepositories";
+import dotenv from 'dotenv'
 
+dotenv.config();
 // interface IArquivoRequet {
 //     key: string;
 //     originalname: string;
@@ -15,7 +17,7 @@ class CreateArquivoService {
 
 
         if (!url) {
-            url = `http://localhost:3333/files/${key} `;
+            url = `${process.env.APP_URL}/files/${key} `;
         }
 
         const arquivo = arquivosRepository.create({ key, originalname, mimetype, size, url })

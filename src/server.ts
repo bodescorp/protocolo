@@ -13,6 +13,7 @@ import { routerSolicitacao } from "./routes/routerSolicitacao";
 import { routerArquivo } from "./routes/routerArquivo";
 import { routerDemanda } from "./routes/routerDemanda";
 import { routerCargo } from "./routes/routerCargo";
+import { routerSetor } from "./routes/routerSetor";
 
 
 const app = express();
@@ -30,6 +31,7 @@ app.use(routerSolicitacao)
 app.use(routerArquivo)
 app.use(routerDemanda)
 app.use(routerCargo)
+app.use(routerSetor)
 
 app.use(validError)
 

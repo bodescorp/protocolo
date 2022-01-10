@@ -2,6 +2,9 @@ import { getCustomRepository } from "typeorm";
 import { UsersRepositories } from "../../repositories/UsersRepositories";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
+import dotenv from "dotenv"
+
+dotenv.config();
 
 interface IAuthenticateRequest {
     matricula: number;
@@ -27,7 +30,7 @@ class AuthenticateUserService {
 
         const token = sign({
             matricula: user.matricula
-        }, "de7b5be3e0b4965023be46fe2a55bd42", {
+        }, `${process.env.CHAVE_TOKEN}`, {
             subject: user.id,
             expiresIn: "1d"
         });

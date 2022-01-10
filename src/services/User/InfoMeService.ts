@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm"
 import { UsersRepositories } from "../../repositories/UsersRepositories"
-import {classToPlain} from "class-transformer"
+import {instanceToPlain} from "class-transformer"
 
 
 class InfoMeService {
@@ -9,7 +9,7 @@ class InfoMeService {
 
         const info_me = await userRepositories.findOne(id_user)
 
-        return classToPlain(info_me);
+        return instanceToPlain(info_me);
     }
 }
 export { InfoMeService }
