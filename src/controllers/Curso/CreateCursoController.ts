@@ -1,9 +1,9 @@
 import { Request, Response } from "express"
-import {CreateCursoService} from "../../services/Curso/CreateCursoService"
+import { CreateCursoService } from "../../services/Curso/CreateCursoService"
 
 class CreateCursoController {
-    async handle(request: Request, response: Response){
-        const {name} = request.body
+    async handle(request: Request, response: Response) {
+        const { name } = request.body
 
         const createCursoService = new CreateCursoService();
 
@@ -13,4 +13,4 @@ class CreateCursoController {
     }
 }
 
-export{CreateCursoController}
+export { CreateCursoController }
