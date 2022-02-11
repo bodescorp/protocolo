@@ -14,6 +14,10 @@ import { routerArquivo } from "./routes/routerArquivo";
 import { routerDemanda } from "./routes/routerDemanda";
 import { routerCargo } from "./routes/routerCargo";
 import { routerSetor } from "./routes/routerSetor";
+import { routerAluno } from "./routes/routerAluno";
+import { routerFuncionario } from "./routes/routerFuncionario";
+import { routerResposta } from "./routes/routerResposta";
+import { routerStatus } from "./routes/routerStatus";
 
 
 const app = express();
@@ -32,6 +36,10 @@ app.use(routerArquivo)
 app.use(routerDemanda)
 app.use(routerCargo)
 app.use(routerSetor)
+app.use(routerAluno)
+app.use(routerFuncionario)
+app.use(routerResposta)
+app.use(routerStatus)
 
 app.use(validError)
 

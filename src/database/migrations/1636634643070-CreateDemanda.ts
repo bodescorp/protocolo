@@ -12,14 +12,9 @@ export class CreateDemanda1636634643070 implements MigrationInterface {
                         type: "uuid",
                         isPrimary: true
                     },
-                    
                     {
                         name: "id_user",
                         type: "uuid",
-                    },
-                    {
-                        name: "id_curso",
-                        type: "uuid"
                     },
                     {
                         name: "id_solicita",

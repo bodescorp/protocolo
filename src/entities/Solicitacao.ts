@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Setor } from "./Setor";
 
 @Entity("solicitacoes")
 class Solicitacao {
@@ -8,6 +9,12 @@ class Solicitacao {
 
     @Column()
     name: string;
+
+    @Column()
+    id_setor: string
+    @JoinColumn({ name: "id_setor" })
+    @ManyToOne(() => Setor)
+    setor: Setor
 
     @CreateDateColumn()
     created_at: Date;

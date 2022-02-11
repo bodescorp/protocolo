@@ -16,6 +16,10 @@ export class CreateSolicitacao1636551232052 implements MigrationInterface {
                     type: "varchar"
                 },
                 {
+                    name:"id_setor",
+                    type:"uuid"
+                },
+                {
                     name: "created_at",
                     type: "timestamp",
                     default: "now()"

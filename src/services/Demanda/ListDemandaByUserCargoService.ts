@@ -7,7 +7,7 @@ class ListDemandaByUserCargoService {
     async execute(id_user: string) {
         const demandaRepositories = getCustomRepository(DemandaRepositories)
 
-        const demandas = await demandaRepositories.find({relations: ["user", "curso", "solicitacao", "arquivo"], order:{'id_user':'ASC'}})
+        const demandas = await demandaRepositories.find({relations: ["user", "solicitacao", "arquivo"], order:{'id_user':'ASC'}})
 
         return demandas;
     }

@@ -20,10 +20,6 @@ export class CreateUsers1635949766368 implements MigrationInterface {
                     type: "bigint"
                 },
                 {
-                    name: "cargo",
-                    type: "uuid"
-                },
-                {
                     name: "created_at",
                     type: "timestamp",
                     default: "now()"

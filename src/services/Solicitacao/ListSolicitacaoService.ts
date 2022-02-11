@@ -6,9 +6,9 @@ import { SolicitacoesRepositories } from "../../repositories/SolicitacoesReposit
 
 class ListSolicitacaoService {
     async execute() {
-        const solicitacaoRepositories = getCustomRepository(SolicitacoesRepositories)
+        const solicitacoesRepositories = getCustomRepository(SolicitacoesRepositories)
 
-        const solicitacoes = solicitacaoRepositories.find();
+        const solicitacoes = solicitacoesRepositories.find();
 
         return solicitacoes;
     }

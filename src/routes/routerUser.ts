@@ -3,7 +3,7 @@ import { AuthenticateUserController } from "../controllers/User/AuthenticateUser
 import { CreateUserController } from "../controllers/User/CreateUserContoller";
 import { InfoMeController } from "../controllers/User/InfoMeController";
 import { ListUserController } from "../controllers/User/ListUserController";
-import { ensureAdm } from "../middlewares/ensureAdm";
+import { ensureFuncionarios } from "../middlewares/ensureFuncionarios";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 
 
@@ -14,9 +14,9 @@ const authenticateUserController = new AuthenticateUserController();
 const listUserController = new ListUserController();
 const infoMeController = new InfoMeController();
 
-routerUser.post("/users", createUserController.handle)
+routerUser.post("/users", ensureAuthenticated, createUserController.handle)
 routerUser.post("/login", authenticateUserController.handle);
-routerUser.get("/users", ensureAuthenticated, ensureAdm, listUserController.handle)
+routerUser.get("/users", ensureAuthenticated, listUserController.handle)
 routerUser.get("/profile/user",ensureAuthenticated, infoMeController.handle)
 
 

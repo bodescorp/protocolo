@@ -1,15 +1,15 @@
 import { getCustomRepository } from "typeorm";
-import { SetorRepositories } from "../../repositories/SetoresRepositories";
+import { SetoresRepositories } from "../../repositories/SetoresRepositories";
 
 class CreateSetorService {
     async execute(name: string) {
-        const setorRepositories = getCustomRepository(SetorRepositories);
+        const setoresRepositories = getCustomRepository(SetoresRepositories);
 
         if (!name) {
             throw new Error("Incorrect name!");
         }
 
-        const setorAlreadyExists = await setorRepositories.findOne({
+        const setorAlreadyExists = await setoresRepositories.findOne({
             name
         });
 
@@ -17,10 +17,10 @@ class CreateSetorService {
             throw new Error ("Setor Already Exists!");
         }
 
-        const setor =  setorRepositories. create({
+        const setor =  setoresRepositories. create({
             name
         });
-        await setorRepositories.save(setor);
+        await setoresRepositories.save(setor);
         return setor;
     }
 }

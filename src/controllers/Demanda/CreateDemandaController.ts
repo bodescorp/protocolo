@@ -3,7 +3,7 @@ import { CreateDemandaService } from "../../services/Demanda/CreateDemandaServic
 
 class CreateDemandaController {
     async handle(request: Request, response: Response) {
-        const { id_curso, id_solicita, id_arquivo, message } = request.body;
+        const { id_solicita, id_arquivo, message } = request.body;
 
         const { user_id } = request
 
@@ -11,7 +11,6 @@ class CreateDemandaController {
 
         const demanda = await createDemandaService.execute({
             id_user: user_id,
-            id_curso,
             id_solicita,
             id_arquivo,
             message

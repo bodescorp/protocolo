@@ -20,13 +20,6 @@ class Demanda {
     user: User;
 
     @Column()
-    id_curso: string;
-
-    @JoinColumn({ name: "id_curso" })
-    @ManyToOne(() => Curso)
-    curso: Curso;
-
-    @Column()
     id_solicita: string;
 
     @JoinColumn({ name: "id_solicita" })

@@ -11,7 +11,9 @@ class ListDemandaByUserService {
             where: {
                 id_user
             },
-            relations: ["user", "curso", "solicitacao", "arquivo"],
+            relations: ["user", "solicitacao", "arquivo"],order: {
+                'created_at': 'DESC',
+              },
         })
 
         return demandas;

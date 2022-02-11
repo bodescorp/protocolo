@@ -18,17 +18,6 @@ export class AlterDemandaaddfronkey1638929956212 implements MigrationInterface {
         await queryRunner.createForeignKey(
             "demandas",
             new TableForeignKey({
-                name: "FKCursoID",
-                referencedTableName: "cursos",
-                referencedColumnNames: ["id"],
-                columnNames: ["id_curso"],
-                onDelete: "SET NULL",
-                onUpdate: "SET NULL",
-            })
-        )
-        await queryRunner.createForeignKey(
-            "demandas",
-            new TableForeignKey({
                 name: "FKSolicitaID",
                 referencedTableName: "solicitacoes",
                 referencedColumnNames: ["id"],

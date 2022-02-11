@@ -19,13 +19,7 @@ class User {
     @Exclude()
     @Column()
     password: string;
-    
-    @Column()
-    cargo: string;
-    @JoinColumn({name: "cargo"})
-    @ManyToOne(() => Cargo)
-    id_cargo: Cargo
-    
+        
     @CreateDateColumn()
     created_at: Date;
     

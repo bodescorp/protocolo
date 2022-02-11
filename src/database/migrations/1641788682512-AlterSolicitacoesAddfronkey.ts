@@ -1,24 +1,23 @@
-import { MigrationInterface, QueryRunner, TableForeignKey } from "typeorm";
+import {MigrationInterface, QueryRunner, TableForeignKey} from "typeorm";
 
-export class AlterUseraddfronkey1638929009748 implements MigrationInterface {
+export class AlterSolicitacoesAddfronkey1641788682512 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createForeignKey(
-            "users",
+            "solicitacoes",
             new TableForeignKey({
-                name: "FkCargoID",
-                referencedTableName: "cargos",
+                name: "FKsetorID",
+                referencedTableName: "setores",
                 referencedColumnNames: ["id"],
-                columnNames: ["cargo"],
+                columnNames: ["id_setor"],
                 onDelete: "SET NULL",
                 onUpdate: "SET NULL",
             })
         )
     }
 
-
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("users");
+        await queryRunner.dropTable("solicitacoes");
     }
 
 }

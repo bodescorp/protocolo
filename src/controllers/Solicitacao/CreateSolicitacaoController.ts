@@ -3,11 +3,11 @@ import { CreateSolitacaoService } from "../../services/Solicitacao/CreateSolicit
 
 class CreateSolicitacaoController {
     async handle(request: Request, response: Response) {
-        const { name } = request.body
+        const { name, id_setor } = request.body
 
         const createSolicitacaoService = new CreateSolitacaoService();
 
-        const solicitacao = await createSolicitacaoService.execute(name);
+        const solicitacao = await createSolicitacaoService.execute({ name, id_setor });
 
         return response.json(solicitacao);
 
